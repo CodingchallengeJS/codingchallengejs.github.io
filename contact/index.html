@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Random web</title>
+    </head>
+    <body style="background-color: rgb(250,250,254);">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="../font.css">
+        <div class="w3-top geist-normal">
+            <div class="w3-bar w3-card" style="padding: 0px 0px; font-size: 24px; background-color: rgb(0, 136, 151);">
+                <a href="../index.html" class="w3-bar-item w3-wide geist-extra-bold", style="color:rgb(0, 76, 255)">MySite</a>
+                <div class="w3-right w3-hide-small">
+                    <a href="../index.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Home</a>
+                    <div class="w3-dropdown-hover">
+                        <button class="w3-button" style="padding: 16px 16px;">Thể loại ▾</button>
+                        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                            <a href="../khoahọc.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo khoa học</a>
+                            <a href="../dienanh.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo điện ảnh</a>
+                            <a href="../showbiz.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo show-biz</a>
+                            <!--a href="#" class="w3-bar-item w3-button">Service 3</a-->
+                        </div>
+                    </div>
+                    <a href="#" class="w3-bar-item w3-button" style="padding: 16px 16px;">Contact</a>
+                </div>
+                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="toggleMenu()">☰</a>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium" style="margin-top:46px">
+            <a href="../index.html" class="w3-bar-item w3-button">Home</a>
+            <a href="../about/index.html" class="w3-bar-item w3-button">About</a>
+            <div class="w3-dropdown-hover">
+                <button class="w3-button">Thể loại ▾</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="../khoahọc.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo khoa học</a>
+                    <a href="../dienanh.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo điện ảnh</a>
+                    <a href="../showbiz.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo show-biz</a>
+                    <!--a href="#" class="w3-bar-item w3-button">Service 3</a-->
+                </div>
+            </div>
+            <a href="../contact/index.html" class="w3-bar-item w3-button">Contact</a>
+        </div>
+
+        <div class="w3-container" style="margin-top:80px" stype="display:flex; justify-content:center">
+            <h1 class="geist" stype="display:flex; justify-content:center">Contact</h1>
+            <div class="contact-section">
+                <p style="text-align:center; font-weight:700; font-size: 36px;">Các phương thức liên lạc:</p>
+                <p style="text-align:center; margin: 8px 0;">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+                    <a href="https://open.spotify.com/user/3164ywju2gbwyop7mkoobpx55mm" target="_blank" rel="noopener noreferrer"><i class="fab fa-spotify" style="font-size:24px;"></i></a> ·
+                    <a href="https://www.facebook.com/share/1RccL28msY/?mibextid=wwXIfr&_rdc=2&_rdr" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook" style="font-size:24px;"></i></a> ·
+                    <a href="https://discord.com/users/855783911841071115" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord" style="font-size:24px;"></i></a> ·
+                    <a href="https://www.instagram.com/qthsgs2427/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" style="font-size:24px;"></i></a> ·
+                    <a href="https://zalo.me/0919516316" target="_blank" rel="noopener noreferrer"><i class="fas fa-phone" style="font-size:24px;"></i></a>
+                </p>
+                <p style="text-align:center; margin-top:6px;">Email: <a href="mailto:congn5924@gmail.com">congn5924@gmail.com</a></p>
+            </div>
+        </div>
+
+        <script>
+            function toggleMenu() {
+                var x = document.getElementById("mobileMenu");
+                if (x.className.indexOf("w3-show") === -1) {
+                    x.className += " w3-show";
+                } else {
+                    x.className = x.className.replace(" w3-show", "");
+                }
+            }
+        </script>
+    </body>
+</html>

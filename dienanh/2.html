@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Random web</title>
+    </head>
+    <body style="background-color: rgb(250,250,254);">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="../font.css">
+        <div class="w3-top geist-normal">
+            <div class="w3-bar w3-card" style="padding: 0px 0px; font-size: 24px; background-color: rgb(0, 136, 151);">
+                <a href="../index.html" class="w3-bar-item w3-wide geist-extra-bold", style="color:rgb(0, 76, 255)">MySite</a>
+                <div class="w3-right w3-hide-small">
+                    <a href="../index.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Home</a>
+                    
+                    <div class="w3-dropdown-hover">
+                        <button class="w3-button" style="padding: 16px 16px;">Thể loại ▾</button>
+                        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                            <a href="../khoahọc.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo khoa học</a>
+                            <a href="../dienanh.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo điện ảnh</a>
+                            <a href="../showbiz.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo show-biz</a>
+                            <!--a href="#" class="w3-bar-item w3-button">Service 3</a-->
+                                                       <!--a href="#" class="w3-bar-item w3-button">Service 3</a-->
+                        </div>
+                    </div>
+                    <a href="../contact/index.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Contact</a>
+                </div>
+                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="toggleMenu()">☰</a>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium" style="margin-top:46px">
+            <a href="../" class="w3-bar-item w3-button">Home</a>
+                        <div class="w3-dropdown-hover">
+                <button class="w3-button">My Projects ▾</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                        <!--a href="#" class="w3-bar-item w3-button">Service 3</a-->
+                </div>
+            </div>
+            <a href="../contact/index.html" class="w3-bar-item w3-button">Contact</a>
+        </div>
+
+        <h6 style="color: transparent;">.</h6>
+        <div class="w3-container" style="margin-top:80px">
+            <h1>Công nghệ deepfake quá nguy hiểm</h1>
+            <iframe src="https://znews.vn/he-luy-khon-luong-khi-ai-thay-the-thuy-tien-post1574579.html" style="height:600px;width:100%;" title="Iframe Example"></iframe>
+        </div>
+
+        <script>
+            function toggleMenu() {
+                var x = document.getElementById("mobileMenu");
+                if (x.className.indexOf("w3-show") === -1) {
+                    x.className += " w3-show";
+                } else {
+                    x.className = x.className.replace(" w3-show", "");
+                }
+            }
+        </script>
+    </body>
+</html>
