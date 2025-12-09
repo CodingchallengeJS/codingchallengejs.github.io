@@ -1,83 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Random web</title>
-    </head>
-    <body style="background-color: rgb(250,250,254);">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="font.css">
-        <div class="w3-top geist-normal">
-            <div class="w3-bar w3-card" style="padding: 0px 0px; font-size: 24px; background-color: rgb(0, 136, 151);">
-                <a href="#" class="w3-bar-item w3-wide geist-extra-bold", style="color:rgb(132, 169, 255)">ImGaySite</a>
-                <div class="w3-right w3-hide-small">
-                    <a href="#" class="w3-bar-item w3-button" style="padding: 16px 16px;">Home</a>
-                    <div class="w3-dropdown-hover">
-                        <button class="w3-button" style="padding: 16px 16px;">Thể loại ▾</button>
-                        <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                            <a href="khoahọc.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo khoa học</a>
-                            <a href="dienanh.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo điện ảnh</a>
-                            <a href="showbiz.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo show-biz</a>
-                            <!--a href="#" class="w3-bar-item w3-button">Service 3</a-->
-                        </div>
-                    </div>
-                    <a href="contact/index.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Contact</a>
-                </div>
-                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="toggleMenu()">☰</a>
-            </div>
-        </div>
-
-        <div id="mobileMenu" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium" style="margin-top:46px">
-            <a href="#" class="w3-bar-item w3-button">Home</a>
-            <div class="w3-dropdown-hover">
-                <button class="w3-button">Thể loại ▾</button>
-                <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="khoahọc.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo khoa học</a>
-                    <a href="dienanh.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo điện ảnh</a>
-                    <a href="showbiz.html" class="w3-bar-item w3-button" style="padding: 16px 16px;">Bài báo show-biz</a>
-                    <!--a href="#" class="w3-bar-item w3-button">Service 3</a-->
-                </div>
-            </div>
-            <a href="contact/index.html" class="w3-bar-item w3-button">Contact</a>
-        </div>
-
-        <div class="w3-container" style="margin-top:80px; text-align: center; display: flex; justify-content: center;"></div>
-            <h1 class="geist-bold" style="display: flex; justify-content: center; font-size: 128px; color: rgb(163, 160, 221);">Bonjour</h1>
-            <h3 style="display: flex; justify-content: center;">
-            Một trang web liệt kê các bài báo thịnh hành hiện tại
-            <img src="assets/catcute.jpg" alt="emoji" style="width:36px;height:36px;vertical-align:middle;margin-left:4px;">
-            </h3>
-            <h3 style="display: flex; justify-content: center;">Những lĩnh vực chính:</h2>
-            <h3 style="display: flex; justify-content: center;">远在天边，近在眼前</h2>
-            <h6>.</h6>
-            <ul class="w3-ul w3-card-4" style="max-width:700px; background-color: rgb(235, 239, 255); margin: 0 auto;">
-                <li>
-                    <a href="khoahọc.html" class="w3-large geist">Bài báo khoa học</a>
-
-                </li>
-                <li>
-                    <a href="dienanh.html" class="w3-large geist">Bài báo điện ảnh</a>
-
-                </li>
-                <li>
-                    <a href="showbiz.html" class="w3-large geist">Bài báo showbiz</a>
-                </li>
-            </ul>
-        </div>
-        <h6 style="color: transparent;">.</h6>
-        <h6 style="color: transparent;">.</h6>
-
-        <script>
-            function toggleMenu() {
-                var x = document.getElementById("mobileMenu");
-                if (x.className.indexOf("w3-show") === -1) {
-                    x.className += " w3-show";
-                } else {
-                    x.className = x.className.replace(" w3-show", "");
-                }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planet Particles Simulator</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #050510; }
+        /* Video hidden or small at bottom */
+        #video-container {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 240px;
+            height: 180px;
+            border: 1px solid #444;
+            z-index: 10;
+            transform: scaleX(-1);
+            opacity: 0.7;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        video { width: 100%; height: 100%; object-fit: cover; }
+        
+        #ui {
+            position: absolute;
+            top: 20px; left: 20px;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            pointer-events: none;
+            user-select: none;
+            text-shadow: 0 0 5px #000;
+        }
+        .instruction {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            margin-bottom: 10px;
+            border-left: 4px solid #00d2ff;
+        }
+        b { color: #00d2ff; }
+        .gold { color: #ffbd4a; }
+    </style>
+    <!-- Import Maps -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
             }
-        </script>
-    </body>
-</html>
+        }
+    </script>
+    <!-- MediaPipe Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
 
+    <div id="ui">
+        <div class="instruction">✋ <b>Open Hand</b>: Explode Planet</div>
+        <div class="instruction">✊ <b>Closed Fist</b>: Assemble Planet</div>
+        <div class="instruction">👋 <b>Move Hand</b>: Rotate View</div>
+    </div>
+
+    <div id="video-container">
+        <video class="input_video"></video>
+    </div>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        // --- 1. Scene Setup ---
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x050510, 0.002); // Deep space fog
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 50;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.body.appendChild(renderer.domElement);
+
+        // --- 2. Create Planet & Ring Particles ---
+        const particleCount = 6000;
+        const geometry = new THREE.BufferGeometry();
+        
+        const positions = [];
+        const targetPositions = []; // The "home" position for the planet shape
+        const colors = [];
+        const sizes = [];
+
+        const colorPlanet = new THREE.Color(0x22aaff); // Ocean Blue
+        const colorPlanetDeep = new THREE.Color(0x1100aa); // Deep Blue
+        const colorRing = new THREE.Color(0xffaa44);   // Gold/Dust
+
+        for (let i = 0; i < particleCount; i++) {
+            let x, y, z, r, theta, phi;
+            let c = new THREE.Color();
+            let s = 1.0;
+
+            // 70% particles for Planet, 30% for Ring
+            if (i < particleCount * 0.7) {
+                // Sphere math
+                r = 12 + Math.random() * 0.5; // Radius 12
+                theta = Math.random() * Math.PI * 2;
+                phi = Math.acos((Math.random() * 2) - 1);
+
+                x = r * Math.sin(phi) * Math.cos(theta);
+                y = r * Math.sin(phi) * Math.sin(theta);
+                z = r * Math.cos(phi);
+
+                // Planet color gradient
+                c.lerpColors(colorPlanetDeep, colorPlanet, Math.random());
+                s = Math.random() * 1.5 + 0.5;
+            } else {
+                // Ring math (Annulus)
+                const innerR = 16;
+                const outerR = 25;
+                r = Math.sqrt(Math.random() * (outerR**2 - innerR**2) + innerR**2);
+                theta = Math.random() * Math.PI * 2;
+                
+                x = r * Math.cos(theta);
+                z = r * Math.sin(theta);
+                y = (Math.random() - 0.5) * 0.5; // Very flat in Y
+
+                c = colorRing;
+                s = Math.random() * 1.0 + 0.2;
+            }
+
+            // Initial positions (start randomly scattered)
+            positions.push((Math.random() - 0.5) * 200, (Math.random() - 0.5) * 200, (Math.random() - 0.5) * 200);
+            
+            // Target positions (the formed planet)
+            targetPositions.push(x, y, z);
+            
+            colors.push(c.r, c.g, c.b);
+            sizes.push(s);
+        }
+
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        geometry.setAttribute('target', new THREE.Float32BufferAttribute(targetPositions, 3));
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+        geometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1));
+
+        // Shader Material to handle size attenuation and colors nicely
+        const material = new THREE.PointsMaterial({
+            size: 1.0,
+            vertexColors: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            map: createCircleTexture(),
+            transparent: true,
+            opacity: 0.9
+        });
+
+        const particleSystem = new THREE.Points(geometry, material);
+        scene.add(particleSystem);
+
+        // Helper: Create a soft glow texture
+        function createCircleTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 32; canvas.height = 32;
+            const context = canvas.getContext('2d');
+            const gradient = context.createRadialGradient(16, 16, 0, 16, 16, 16);
+            gradient.addColorStop(0, 'rgba(255,255,255,1)');
+            gradient.addColorStop(0.2, 'rgba(255,255,255,0.8)');
+            gradient.addColorStop(0.5, 'rgba(255,255,255,0.2)');
+            gradient.addColorStop(1, 'rgba(0,0,0,0)');
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, 32, 32);
+            const texture = new THREE.Texture(canvas);
+            texture.needsUpdate = true;
+            return texture;
+        }
+
+        // --- 3. Interaction State ---
+        const state = {
+            exploded: false,     // True = Open Hand, False = Fist
+            explodeFactor: 0,    // 0 to 1
+            rotationTarget: { x: 0, y: 0 },
+            rotationCurrent: { x: 0, y: 0 }
+        };
+
+        // --- 4. MediaPipe Logic ---
+        const videoElement = document.getElementsByClassName('input_video')[0];
+
+        function onResults(results) {
+            if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+                const landmarks = results.multiHandLandmarks[0];
+                
+                // --- A. Detect Open Hand vs Fist ---
+                // Calculate distance between Wrist(0) and Middle Finger Tip(12)
+                const wrist = landmarks[0];
+                const tip = landmarks[12];
+                const distance = Math.sqrt(Math.pow(wrist.x - tip.x, 2) + Math.pow(wrist.y - tip.y, 2));
+
+                // Threshold: If tip is far from wrist, hand is open.
+                // Note: Coordinates are normalized 0-1.
+                // Typical open hand distance ~0.4 - 0.6, Fist ~0.1 - 0.2
+                const isHandOpen = distance > 0.35; 
+                state.exploded = isHandOpen;
+
+                // --- B. Detect Hand Position for Rotation ---
+                // Use the Palm Center (approx Landmark 9)
+                const handX = landmarks[9].x; // 0 (left) to 1 (right)
+                const handY = landmarks[9].y; // 0 (top) to 1 (bottom)
+
+                // Map 0..1 to -PI..PI rotation angles
+                // Invert X because video is mirrored
+                state.rotationTarget.y = (handX - 0.5) * 3; 
+                state.rotationTarget.x = (handY - 0.5) * 2;
+
+            } else {
+                // No hand detected: Auto-rotate slowly and assemble
+                state.exploded = false;
+                state.rotationTarget.y += 0.005; // gentle spin
+            }
+        }
+
+        const hands = new Hands({locateFile: (file) => {
+            return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+        }});
+        
+        hands.setOptions({
+            maxNumHands: 1,
+            modelComplexity: 1,
+            minDetectionConfidence: 0.5,
+            minTrackingConfidence: 0.5
+        });
+        
+        hands.onResults(onResults);
+
+        const cameraUtils = new Camera(videoElement, {
+            onFrame: async () => { await hands.send({image: videoElement}); },
+            width: 320, height: 240
+        });
+        cameraUtils.start();
+
+        // --- 5. Animation Loop ---
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            const dt = clock.getDelta();
+            const time = clock.getElapsedTime();
+
+            // 1. Smoothly update Explosion Factor
+            const targetFactor = state.exploded ? 1.0 : 0.0;
+            state.explodeFactor += (targetFactor - state.explodeFactor) * 5 * dt;
+
+            // 2. Smoothly update Rotation
+            state.rotationCurrent.x += (state.rotationTarget.x - state.rotationCurrent.x) * 5 * dt;
+            state.rotationCurrent.y += (state.rotationTarget.y - state.rotationCurrent.y) * 5 * dt;
+
+            // Apply rotation to the whole system
+            particleSystem.rotation.x = state.rotationCurrent.x + 0.3; // +0.3 tilt for better view of ring
+            particleSystem.rotation.y = state.rotationCurrent.y;
+
+            // 3. Update Particles
+            const posAttr = geometry.attributes.position;
+            const targetAttr = geometry.attributes.target;
+            
+            for (let i = 0; i < particleCount; i++) {
+                // Original Target Position (Planet Shape)
+                const tx = targetAttr.getX(i);
+                const ty = targetAttr.getY(i);
+                const tz = targetAttr.getZ(i);
+
+                // Current Position
+                let px = posAttr.getX(i);
+                let py = posAttr.getY(i);
+                let pz = posAttr.getZ(i);
+
+                // EXPLOSION LOGIC:
+                // If explodeFactor is high, push particle outward based on its direction from center
+                // We add some noise so it looks chaotic
+                let explodeX = tx * 4.0 + Math.sin(time * 2 + i) * 10;
+                let explodeY = ty * 4.0 + Math.cos(time * 3 + i) * 10;
+                let explodeZ = tz * 4.0 + Math.sin(time * 4 + i) * 10;
+
+                // Interpolate between Formed State (tx) and Exploded State (explodeX)
+                // We also mix current position for inertia
+                
+                const destX = THREE.MathUtils.lerp(tx, explodeX, state.explodeFactor);
+                const destY = THREE.MathUtils.lerp(ty, explodeY, state.explodeFactor);
+                const destZ = THREE.MathUtils.lerp(tz, explodeZ, state.explodeFactor);
+
+                // Move particle towards destination (Spring/Lerp force)
+                px += (destX - px) * (0.05 + state.explodeFactor * 0.05); // Move faster when exploding
+                py += (destY - py) * (0.05 + state.explodeFactor * 0.05);
+                pz += (destZ - pz) * (0.05 + state.explodeFactor * 0.05);
+
+                // Add a subtle idle orbit/noise even when assembled so it feels alive
+                if(state.explodeFactor < 0.1) {
+                    px += Math.sin(time + i) * 0.02;
+                    py += Math.cos(time + i * 0.9) * 0.02;
+                }
+
+                posAttr.setXYZ(i, px, py, pz);
+            }
+
+            posAttr.needsUpdate = true;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle Window Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
