@@ -293,9 +293,9 @@
                 const destZ = THREE.MathUtils.lerp(tz, iz, state.explodeFactor);
 
                 // Move particle towards destination (Spring/Lerp force)
-                px += (destX - px) * (0.05 + state.explodeFactor * 0.05); // Move faster when exploding
-                py += (destY - py) * (0.05 + state.explodeFactor * 0.05);
-                pz += (destZ - pz) * (0.05 + state.explodeFactor * 0.05);
+                px += (destX - px) * (0.12 + state.explodeFactor * 0.05); // Move faster when exploding
+                py += (destY - py) * (0.12 + state.explodeFactor * 0.05);
+                pz += (destZ - pz) * (0.12 + state.explodeFactor * 0.05);
 
                 // Add a subtle idle orbit/noise even when assembled so it feels alive
                 if(state.explodeFactor < 0.1) {
@@ -321,3 +321,4 @@
     </script>
 </body>
 </html>
+
