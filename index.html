@@ -59,9 +59,9 @@
 <body>
 
     <div id="ui">
-        <div class="instruction">✋ <b>Open Hand</b>: Explode Planet</div>
-        <div class="instruction">✊ <b>Closed Fist</b>: Assemble Planet</div>
-        <div class="instruction">👋 <b>Move Hand</b>: Rotate View</div>
+        <div class="instruction">✋ <b>Open Hand</b>: EXPLODE Planet</div>
+        <div class="instruction">✊ <b>Closed Fist</b>: ASSEMBLE Planet</div>
+        <div class="instruction">👋 <b>Move Hand</b>: ROTATE View</div>
     </div>
 
     <div id="video-container">
@@ -88,6 +88,7 @@
         const geometry = new THREE.BufferGeometry();
         
         const positions = [];
+        const initialPositions = []; // Store the initial random positions for explosion
         const targetPositions = []; // The "home" position for the planet shape
         const colors = [];
         const sizes = [];
@@ -131,7 +132,11 @@
             }
 
             // Initial positions (start randomly scattered)
-            positions.push((Math.random() - 0.5) * 200, (Math.random() - 0.5) * 200, (Math.random() - 0.5) * 200);
+            const initX = (Math.random() - 0.5) * 200;
+            const initY = (Math.random() - 0.5) * 200;
+            const initZ = (Math.random() - 0.5) * 200;
+            positions.push(initX, initY, initZ);
+            initialPositions.push(initX, initY, initZ);
             
             // Target positions (the formed planet)
             targetPositions.push(x, y, z);
@@ -141,6 +146,7 @@
         }
 
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        geometry.setAttribute('initial', new THREE.Float32BufferAttribute(initialPositions, 3));
         geometry.setAttribute('target', new THREE.Float32BufferAttribute(targetPositions, 3));
         geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
         geometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1));
@@ -263,6 +269,7 @@
             // 3. Update Particles
             const posAttr = geometry.attributes.position;
             const targetAttr = geometry.attributes.target;
+            const initialAttr = geometry.attributes.initial;
             
             for (let i = 0; i < particleCount; i++) {
                 // Original Target Position (Planet Shape)
@@ -270,24 +277,20 @@
                 const ty = targetAttr.getY(i);
                 const tz = targetAttr.getZ(i);
 
+                // Initial Position (where particle started when page loaded)
+                const ix = initialAttr.getX(i);
+                const iy = initialAttr.getY(i);
+                const iz = initialAttr.getZ(i);
+
                 // Current Position
                 let px = posAttr.getX(i);
                 let py = posAttr.getY(i);
                 let pz = posAttr.getZ(i);
 
-                // EXPLOSION LOGIC:
-                // If explodeFactor is high, push particle outward based on its direction from center
-                // We add some noise so it looks chaotic
-                let explodeX = tx * 4.0 + Math.sin(time * 2 + i) * 10;
-                let explodeY = ty * 4.0 + Math.cos(time * 3 + i) * 10;
-                let explodeZ = tz * 4.0 + Math.sin(time * 4 + i) * 10;
-
-                // Interpolate between Formed State (tx) and Exploded State (explodeX)
-                // We also mix current position for inertia
-                
-                const destX = THREE.MathUtils.lerp(tx, explodeX, state.explodeFactor);
-                const destY = THREE.MathUtils.lerp(ty, explodeY, state.explodeFactor);
-                const destZ = THREE.MathUtils.lerp(tz, explodeZ, state.explodeFactor);
+                // Interpolate between Formed State (planet) and Exploded State (initial random positions)
+                const destX = THREE.MathUtils.lerp(tx, ix, state.explodeFactor);
+                const destY = THREE.MathUtils.lerp(ty, iy, state.explodeFactor);
+                const destZ = THREE.MathUtils.lerp(tz, iz, state.explodeFactor);
 
                 // Move particle towards destination (Spring/Lerp force)
                 px += (destX - px) * (0.05 + state.explodeFactor * 0.05); // Move faster when exploding
