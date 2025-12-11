@@ -187,12 +187,12 @@
             exploded: false,     // True = Open Hand, False = Fist
             explodeFactor: 0,    // 0 to 1
             rotationTarget: { x: 0, y: 0 },
-            rotationCurrent: { x: 0, y: 0 }
+            rotationCurrent: { x: 0, y: 0 },
+            handDistance: 0.5    // Distance from hand to camera
         };
 
         // --- 4. MediaPipe Logic ---
         const videoElement = document.getElementsByClassName('input_video')[0];
-
         function onResults(results) {
             if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
                 const landmarks = results.multiHandLandmarks[0];
@@ -218,6 +218,12 @@
                 // Invert X because video is mirrored
                 state.rotationTarget.y = (handX - 0.5) * 3; 
                 state.rotationTarget.x = (handY - 0.5) * 2;
+
+                // Store hand distance for use in animation loop
+                state.handDistance = Math.sqrt(
+                    Math.pow(landmarks[9].x - 0.5, 2) + 
+                    Math.pow(landmarks[9].y - 0.5, 2)
+                ) * 2;
 
             } else {
                 // No hand detected: Auto-rotate slowly and assemble
@@ -288,9 +294,12 @@
                 let pz = posAttr.getZ(i);
 
                 // Interpolate between Formed State (planet) and Exploded State (initial random positions)
-                const destX = THREE.MathUtils.lerp(tx, ix, state.explodeFactor);
-                const destY = THREE.MathUtils.lerp(ty, iy, state.explodeFactor);
-                const destZ = THREE.MathUtils.lerp(tz, iz, state.explodeFactor);
+                // Map distance to focal: closer hand (small distance) = larger focal (zoom in)
+                // At ~0.25 distance → focal ≈ 1.4; farther → smaller focal
+                const focal = Math.max(0.5, 2.0 - state.handDistance * 2.0);
+                const destX = THREE.MathUtils.lerp(tx, ix, state.explodeFactor) * focal;
+                const destY = THREE.MathUtils.lerp(ty, iy, state.explodeFactor) * focal;
+                const destZ = THREE.MathUtils.lerp(tz, iz, state.explodeFactor) * focal;
 
                 // Move particle towards destination (Spring/Lerp force)
                 px += (destX - px) * (0.12 + state.explodeFactor * 0.05); // Move faster when exploding
@@ -321,4 +330,3 @@
     </script>
 </body>
 </html>
-
