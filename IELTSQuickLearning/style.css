@@ -1,0 +1,99 @@
+body {
+ font-family: sans-serif;
+ background-color: #dbf7ff;
+ margin: 0;
+}
+header {
+ background-color: rgb(31, 158, 255);
+ color: whitesmoke;
+ padding: 1.5rem;
+}
+nav ul {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+ display: flex;
+ justify-content: space-around;
+}
+main {
+ padding: 2rem;
+}
+section {
+ margin-bottom: 2rem;
+}
+
+#vocabulary-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#vocabulary-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+#search-bar, #category-filter {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+}
+
+#vocabulary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: #f0f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card .pronunciation {
+    font-style: italic;
+    color: #555;
+}
+
+.card .meaning {
+    color: #333;
+    font-weight: bold;
+}
+a {
+    color: rgb(245, 245, 245);
+    font-weight:bolder;
+    border-radius: 8px; 
+    font-size: large;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration-line: line-through;
+    text-decoration: underline;
+}
+
+input {
+    border-radius: 8px;
+    border-color: aqua;
+    background-color: #f9ffff;
+}
+
+select {
+    border-radius: 8px;
+    border-color: rgb(0, 106, 255);
+    background-color: #f6ffff;
+}
+
+option {
+    border-color: aqua;
+    background-color: #f0ffff;
+    border-radius: 8px;
+    stroke-width: 2px;
+}
