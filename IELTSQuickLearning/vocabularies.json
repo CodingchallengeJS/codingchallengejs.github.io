@@ -1,6 +1,6 @@
 {
     "Urbanization & Migration": {
-        "mass exodus": { "pronunciation": "/mæs ˈeksədəs/", "meaning": "cuộc di cư hàng loạt" },
+        "mass exodus": { "pronunciation": "/mæs ˈeksədəs/", "meaning": "làn sóng di cư ồ ạt" },
         "rural depopulation": { "pronunciation": "/ˈrʊrəl diːˌpɒpjuˈleɪʃn/", "meaning": "sự suy giảm dân số nông thôn" },
         "overcrowded metropolises": { "pronunciation": "/ˌəʊvəˈkraʊdɪd məˈtrɒpəlɪsɪz/", "meaning": "các đô thị quá đông đúc" },
         "strain on urban infrastructure": { "pronunciation": "/streɪn ɒn ˈɜːbən ˈɪnfrəˌstrʌktʃə/", "meaning": "gánh nặng cho cơ sở hạ tầng đô thị" },
@@ -9,7 +9,7 @@
         "job magnet cities": { "pronunciation": "/dʒɒb ˈmæɡnət ˈsɪtiz/", "meaning": "các thành phố thu hút việc làm" },
         "in search of greener pastures": { "pronunciation": "/ɪn sɜːtʃ əv ˈɡriːnə ˈpɑːstʃəz/", "meaning": "tìm kiếm một cuộc sống tốt hơn" },
         "internal migration": { "pronunciation": "/ɪnˈtɜːnl maɪˈɡreɪʃn/", "meaning": "di cư nội địa" },
-        "urban sprawl": { "pronunciation": "/ˈɜːbən sprɔːl/", "meaning": "sự mở rộng đô thị" },
+        "urban sprawl": { "pronunciation": "/ˈɜːbən sprɔːl/", "meaning": "sự đô thị hóa tràn lan" },
         "housing crisis": { "pronunciation": "/ˈhaʊzɪŋ ˈkraɪsɪs/", "meaning": "khủng hoảng nhà ở" },
         "slum development": { "pronunciation": "/slʌm dɪˈveləpmənt/", "meaning": "sự phát triển khu ổ chuột" },
         "public transport strain": { "pronunciation": "/ˈpʌblɪk ˈtrænspɔːt streɪn/", "meaning": "gánh nặng cho giao thông công cộng" },
@@ -58,7 +58,7 @@
         "preventive healthcare": { "pronunciation": "/prɪˈventɪv ˈhelθkeə/", "meaning": "chăm sóc sức khỏe dự phòng" },
         "public health campaigns": { "pronunciation": "/ˈpʌblɪk helθ kæmˈpeɪnz/", "meaning": "các chiến dịch y tế công cộng" },
         "obesity epidemic": { "pronunciation": "/əʊˈbiːsəti ˌepɪˈdemɪk/", "meaning": "đại dịch béo phì" },
-        "mental well-being": { "pronunciation": "/ˈmentl ˌwelˈbiːɪŋ/", "meaning": "sức khỏe tinh thần" },
+        "mental well-being": { "pronunciation": "/ˈmentl ˌwelˈbiːɪŋ/", "meaning": "sức khỏe tinh thần(tích cực)" },
         "nutritional awareness": { "pronunciation": "/njuːˈtrɪʃənl əˈweənəs/", "meaning": "nhận thức về dinh dưỡng" },
         "fast food dependency": { "pronunciation": "/fɑːst fuːd dɪˈpendənsi/", "meaning": "sự phụ thuộc vào thức ăn nhanh" },
         "lifestyle diseases": { "pronunciation": "/ˈlaɪfstaɪl dɪˈziːzɪz/", "meaning": "các bệnh do lối sống" },
@@ -159,11 +159,11 @@
         "carbon footprint": { "pronunciation": "/ˈkɑːbən ˈfʊtprɪnt/", "meaning": "dấu chân carbon" },
         "sustainable development": { "pronunciation": "/səˈsteɪnəbl dɪˈveləpmənt/", "meaning": "phát triển bền vững" },
         "climate-conscious": { "pronunciation": "/ˈklaɪmət-ˈkɒnʃəs/", "meaning": "có ý thức về khí hậu" },
-        "environmental degradation": { "pronunciation": "/ɪnˌvaɪrənˈmentl ˌdeɡrəˈdeɪʃn/", "meaning": "suy thoái môi trường" },
+        "environmental degradation": { "pronunciation": "/ɪnˌvaɪrənˈmentl ˌdeɡrəˈdeɪʃn/", "meaning": "sự suy thoái môi trường" },
         "non-renewable energy": { "pronunciation": "/ˌnɒn rɪˈnjuːəbl ˈenədʒi/", "meaning": "năng lượng không tái tạo" },
         "eco-friendly": { "pronunciation": "/ˈiːkəʊ-ˈfrendli/", "meaning": "thân thiện với môi trường" },
         "zero-waste lifestyle": { "pronunciation": "/ˈzɪərəʊ-weɪst ˈlaɪfstaɪl/", "meaning": "lối sống không rác thải" },
-        "climate change mitigation": { "pronunciation": "/ˈklaɪmət tʃeɪndʒ ˌmɪtɪˈɡeɪʃn/", "meaning": "giảm thiểu biến đổi khí hậu" },
+        "climate change mitigation": { "pronunciation": "/ˈklaɪmət tʃeɪndʒ ˌmɪtɪˈɡeɪʃn/", "meaning": "giảm tác động của biến đổi khí hậu" },
         "biodiversity loss": { "pronunciation": "/ˌbaɪəʊdaɪˈvɜːsəti lɒs/", "meaning": "mất đa dạng sinh học" },
         "deforestation": { "pronunciation": "/ˌdiːˌfɒrɪˈsteɪʃn/", "meaning": "nạn phá rừng" },
         "greenhouse gases": { "pronunciation": "/ˈɡriːnhaʊs ˈɡæsɪz/", "meaning": "khí nhà kính" },
@@ -207,7 +207,7 @@
         "clean energy": { "pronunciation": "/kliːn ˈenədʒi/", "meaning": "năng lượng sạch" }
     },
     "Technology & Society": {
-        "technological disruption": { "pronunciation": "/ˌteknəˈlɒdʒɪkl dɪsˈrʌpʃn/", "meaning": "sự đột phá công nghệ" },
+        "technological disruption": { "pronunciation": "/ˌteknəˈlɒdʒɪkl dɪsˈrʌpʃn/", "meaning": "sự phá vỡ mang tính đột phá do công nghệ" },
         "digital divide": { "pronunciation": "/ˈdɪdʒɪtl dɪˈvaɪd/", "meaning": "khoảng cách số" },
         "information overload": { "pronunciation": "/ˌɪnfəˈmeɪʃn ˈəʊvələʊd/", "meaning": "quá tải thông tin" },
         "screen addiction": { "pronunciation": "/skriːn əˈdɪkʃn/", "meaning": "nghiện màn hình" },
