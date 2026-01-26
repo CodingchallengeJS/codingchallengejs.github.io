@@ -6,7 +6,7 @@ body {
 header {
  background-color: rgb(31, 158, 255);
  color: whitesmoke;
- padding: 1.5rem;
+ padding: 1.2rem;
 }
 nav ul {
  list-style: none;
@@ -96,7 +96,6 @@ option {
     background-color: #f0ffff;
     border-radius: 8px;
     stroke-width: 2px;
-
 }
 
 .nava {
