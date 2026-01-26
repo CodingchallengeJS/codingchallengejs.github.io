@@ -96,4 +96,33 @@ option {
     background-color: #f0ffff;
     border-radius: 8px;
     stroke-width: 2px;
+
+}
+
+.nava {
+    display: flex;
+    align-items: center;
+}
+
+/* Desktop */
+#mobile-menu {
+    display: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    nav ul li:not(:first-child) {
+        display: none;
+    }
+
+    #mobile-menu {
+        display: block;
+        margin-left: auto;
+        padding: 6px 10px;
+        font-size: 16px;
+    }
+    
+    #vocabulary-controls {
+        flex-direction: column;
+    }
 }
