@@ -96,17 +96,44 @@ brain drain,sustainable diet,learning disparities,clean energy,virtual assistant
         categoryFilter.appendChild(option);
     });
 
-    function displayWords(words) {
+    async function displayWords(words) {
         grid.innerHTML = '';
         words.forEach(item => {
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `
                 <h3>${item.word}</h3>
-                <p class="pronunciation">${item.pronunciation}</p>
+                <p class="pronunciation">${item.pronunciation} <button class="speak-btn" data-word="${item.word}" title="Listen">🔊</button></p>
                 <p class="meaning">${item.meaning}</p>
             `;
             grid.appendChild(card);
+        });
+
+        function speakWord(word) {
+            // Check if the browser supports the SpeechSynthesis API
+            if ('speechSynthesis' in window) {
+                // Cancel any previous speech to prevent overlap
+                window.speechSynthesis.cancel();
+
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US'; // Set the language for correct pronunciation
+                utterance.rate = 0.9;     // Slightly slower for clarity
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Sorry, your browser does not support text-to-speech.");
+            }
+        }
+
+        // Add a single event listener to the grid container
+        grid.addEventListener('click', function(event) {
+            // Check if the clicked element is a speak button
+            const speakButton = event.target.closest('.speak-btn');
+            
+            if (speakButton) {
+                const wordToSpeak = speakButton.dataset.word;
+                speakWord(wordToSpeak);
+            }
         });
     }
 
