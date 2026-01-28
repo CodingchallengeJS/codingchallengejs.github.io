@@ -103,6 +103,27 @@ option {
     align-items: center;
 }
 
+.pronunciation {
+    margin: 0; /* Remove default paragraph margin */
+    font-style: italic;
+    color: #555;
+}
+
+.speak-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem; /* Make the emoji icon larger */
+    padding: 0;
+    margin-left: 5px; /* Space between text and button */
+    color: #007BFF; /* A nice blue color */
+    transition: transform 0.2s;
+}
+
+.speak-btn:hover {
+    transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
 /* Desktop */
 #mobile-menu {
     display: none;
