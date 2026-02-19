@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year 2026</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Playfair Display", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#bgVideo {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center center;
+  filter: blur(6px) brightness(0.5);
+  z-index: -2;
+}
+
+/* Firework canvas */
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: 5rem;
+  background: linear-gradient(45deg, gold, #ffdf6b);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(255,215,0,0.7);
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+/* Scroll button */
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.section2 {
+  min-height: 100vh;
+  background: #8B0000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  color: gold;
+}
+
+.section2 h2 {
+  font-size: 3rem;
+  margin-bottom: 80px;
+}
+
+.lixi-container {
+  display: flex;
+  gap: 50px;
+}
+
+.lixi {
+  width: 120px;
+  height: 200px;
+  background: linear-gradient(#c40000, #8b0000);
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+
+.lixi:hover {
+  transform: translateY(-15px) scale(1.08);
+}
+
+.lixi::before {
+  content: "🧧";
+  font-size: 4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.popup-content {
+  background: #b30000;
+  padding: 40px 60px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px gold;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.close-btn {
+  margin-top: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: gold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background video -->
+<video autoplay muted loop playsinline id="bgVideo">
+  <source src="firework.mp4" type="video/mp4">
+</video>
+
+<!-- Fireworks Canvas -->
+<canvas id="fireworks"></canvas>
+
+<!-- Music -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>2026</h1>
+  <p>Happy New Year</p>
+  <p>Xin chào Bính Ngọ🐴</p>
+  <div class="scroll-down">↓</div>
+</section>
+
+<!-- SECTION 2 -->
+<section class="section2">
+  <h2>Chọn lì xì của bạn</h2>
+  <div class="lixi-container">
+    <div class="lixi"></div>
+    <div class="lixi"></div>
+    <div class="lixi"></div>
+    <div class="lixi"></div>
+    <div class="lixi"></div>
+  </div>
+</section>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <p>🎉 Chúc bạn may mắn lần sau =)) 🎉</p>
+    <p>Bù lại có lời chúc tinh thần</p>
+    <p>Happy new year</p>
+    <p>新年快乐</p>
+    <p>Năm mới vui vẻ</p>
+    <div class="close-btn">Đóng</div>
+  </div>
+</div>
+
+<script>
+
+window.addEventListener("click", function() {
+  document.getElementById("bgMusic").play();
+}, { once: true });
+
+document.querySelector(".scroll-down").onclick = () => {
+  window.scrollTo({
+    top: window.innerHeight,
+    behavior: "smooth"
+  });
+};
+
+const popup = document.getElementById("popup");
+
+document.querySelectorAll(".lixi").forEach(lixi => {
+  lixi.onclick = () => {
+    popup.style.display = "flex";
+  };
+});
+
+document.querySelector(".close-btn").onclick = () => {
+  popup.style.display = "none";
+};
+
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+let rockets = [];
+
+function createFirework() {
+  const x = Math.random() * canvas.width;
+  const targetY = Math.random() * (canvas.height * 0.5) + canvas.height * 0.1;
+  const color = `hsl(${Math.random() * 360}, 100%, 55%)`;
+
+  rockets.push({
+    x,
+    y: canvas.height + 10,
+    targetX: x,
+    targetY,
+    speed: Math.random() * 2 + 6,
+    color,
+    trail: []
+  });
+}
+
+function explodeFirework(x, y, color) {
+  for (let i = 0; i < 60; i++) {
+    const angle = Math.random() * 2 * Math.PI;
+    const speed = Math.random() * 4 + 2;
+    particles.push({
+      x,
+      y,
+      radius: Math.random() * 1.8 + 1.6,
+      color,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      alpha: 1,
+      decay: Math.random() * 0.015 + 0.01
+    });
+  }
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  rockets.forEach((rocket, index) => {
+    const dx = rocket.targetX - rocket.x;
+    const dy = rocket.targetY - rocket.y;
+    const distance = Math.hypot(dx, dy);
+
+    if (distance <= rocket.speed) {
+      explodeFirework(rocket.targetX, rocket.targetY, rocket.color);
+      rockets.splice(index, 1);
+      return;
+    }
+
+    rocket.x += (dx / distance) * rocket.speed;
+    rocket.y += (dy / distance) * rocket.speed;
+    rocket.trail.push({ x: rocket.x, y: rocket.y });
+    if (rocket.trail.length > 14) rocket.trail.shift();
+
+    ctx.globalAlpha = 0.55;
+    ctx.beginPath();
+    for (let i = 0; i < rocket.trail.length; i++) {
+      const t = rocket.trail[i];
+      if (i === 0) ctx.moveTo(t.x, t.y);
+      else ctx.lineTo(t.x, t.y);
+    }
+    ctx.strokeStyle = rocket.color;
+    ctx.lineWidth = 2;
+    ctx.shadowColor = rocket.color;
+    ctx.shadowBlur = 12;
+    ctx.stroke();
+
+    ctx.globalAlpha = 1;
+    ctx.beginPath();
+    ctx.arc(rocket.x, rocket.y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = rocket.color;
+    ctx.shadowColor = rocket.color;
+    ctx.shadowBlur = 20;
+    ctx.fill();
+  });
+
+  particles.forEach((p, index) => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.02;
+    p.alpha -= p.decay;
+
+    if (p.alpha <= 0) {
+      particles.splice(index,1);
+      return;
+    }
+
+    ctx.globalAlpha = p.alpha;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+    ctx.fillStyle = p.color;
+    ctx.shadowColor = p.color;
+    ctx.shadowBlur = 18;
+    ctx.fill();
+  });
+
+  ctx.globalAlpha = 1;
+  ctx.shadowBlur = 0;
+}
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+setInterval(createFirework, 900);
+animate();
+
+</script>
+
+</body>
+</html>
