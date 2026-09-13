@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="avatar-circle">
+      <circle cx="32" cy="32" r="30" />
+    </clipPath>
+  </defs>
+  <image
+    href="https://res.cloudinary.com/dflrkkdvt/image/upload/v1774880724/chibi1_nyt0pv.webp"
+    x="2"
+    y="2"
+    width="60"
+    height="60"
+    preserveAspectRatio="xMidYMid slice"
+    clip-path="url(#avatar-circle)"
+  />
+</svg>

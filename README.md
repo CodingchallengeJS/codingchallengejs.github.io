@@ -1,2 +1,8 @@
-# codingchallengejs.github.io
-a
+# My Profile
+
+## Run local
+
+```bash
+npm install
+npm run dev
+```
