@@ -59,7 +59,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-snow/10 blur-3xl rounded-full"></div>
           <div className="relative z-10 h-full w-full overflow-hidden rounded-full border-2 border-snow/20 shadow-2xl">
             <img
-              src="https://res.cloudinary.com/dflrkkdvt/image/upload/v1793269516/best_photo_b0nb64.jpg"
+              src="https://res.cloudinary.com/dflrkkdvt/image/upload/v1774881033/fads_utwoke.png"
               alt="Big Avatar"
               className="h-full w-full object-cover"
               referrerPolicy="no-referrer"
